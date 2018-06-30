@@ -26,9 +26,10 @@ std::vector<std::vector<std::string> > parse(std::vector<std::string> input) {
 			else if (std::regex_match(&((*iter)[i]), std::regex("pop|dump|add|sub|mul|div|mod|print|exit"))) {
 				std::vector<std::string> tmp;
 				std::ssub_match base_sub_match = match[0];
+
 				tmp.push_back(base_sub_match.str());
 				i += base_sub_match.str().size();
-				std::cout << "Instruction : " << base_sub_match.str() << std::endl;
+//				std::cout << "Instruction : " << match[0] << std::endl;
 			}
 			else if (std::regex_match(&((*iter)[i]), std::regex("(push|assert) ((int8|int16|int32)\\([-]?[0-9]+\\)|(float|double)\\([-]?[0-9]+.[0-9]+\\))"))) {
 				for (auto it = match.begin(); it!=match.end(); ++it) {
@@ -67,7 +68,7 @@ int main(int argc, char **argv) {
 			}
 		}
 	}
-	std::vector<std::vector<std::string> > instruction(parse(input));
-
+//	std::vector<std::vector<std::string> > instruction(parse(input));
+	std::cout << "yo"<< std::endl;
 	return 0;
 }
