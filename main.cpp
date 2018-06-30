@@ -13,7 +13,7 @@ std::vector<std::vector<std::string> > parse(std::vector<std::string> input) {
 	while (iter != input.end()) {
 		int i = 0;
 		while (i < iter->size()) {
-			std::smatch match;
+			std::cmatch match;
 
 			if (i == 0 && std::regex_match(*iter, std::regex("^;;")) && !read_from_file) {
 				//check for exit and quit execution
@@ -23,23 +23,35 @@ std::vector<std::vector<std::string> > parse(std::vector<std::string> input) {
 				std::cout << "Comment : " << *iter << std::endl;
 				break;
 			}
-			else if (std::regex_match(&((*iter)[i]), std::regex("pop|dump|add|sub|mul|div|mod|print|exit"))) {
+			else if (std::regex_match(&((*iter)[i]), match, std::regex("pop|dump|add|sub|mul|div|mod|print|exit"))) {
 				std::vector<std::string> tmp;
-				std::ssub_match base_sub_match = match[0];
 
-				tmp.push_back(base_sub_match.str());
-				i += base_sub_match.str().size();
-//				std::cout << "Instruction : " << match[0] << std::endl;
+				tmp.push_back(match[0]);
+				result.push_back(tmp);
+				i += match[0].str().size();
+				std::cout << "Instruction : " << match[0].str() << std::endl;
 			}
-			else if (std::regex_match(&((*iter)[i]), std::regex("(push|assert) ((int8|int16|int32)\\([-]?[0-9]+\\)|(float|double)\\([-]?[0-9]+.[0-9]+\\))"))) {
-				for (auto it = match.begin(); it!=match.end(); ++it) {
-					std::cout << *it << std::endl;
-				}
+			else if (std::regex_match(&((*iter)[i]), match, std::regex("(push|assert) ((int8|int16|int32)\\(([-]?[0-9]+)\\)|(float|double)\\(([-]?[0-9]+.[0-9]+)\\))"))) {
+				std::vector<std::string> tmp;
 
+				tmp.push_back(match[1]);
+				std::cout << "Instruction : " << match[1].str() << std::endl;
+				if (match[3]!= "" && match[4] != "") {
+					tmp.push_back(match[3]);
+					tmp.push_back(match[4]);
+				}
+				else {
+					tmp.push_back(match[5]);
+					tmp.push_back(match[6]);
+				}
+				result.push_back(tmp);
+				i += match[0].str().size();
+			}
+			else if ((*iter)[i] == ' ' || (*iter)[i] == '\t'){
 				i++;
 			}
 			else {
-				i++;
+				std::cout << "error";
 			}
 
 		}
@@ -68,7 +80,6 @@ int main(int argc, char **argv) {
 			}
 		}
 	}
-//	std::vector<std::vector<std::string> > instruction(parse(input));
-	std::cout << "yo"<< std::endl;
+	std::vector<std::vector<std::string> > instruction(parse(input));
 	return 0;
 }

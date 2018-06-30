@@ -1,1 +1,2 @@
-push Int8(90)
+push int8(90)
+                     assert double(-42.42)
