@@ -65,12 +65,13 @@ std::vector<std::vector<std::string> > parser(std::vector<std::string> input) {
 }
 
 void work(std::vector<std::vector<std::string> > instruction) {
+	typedef void (*function)(std::vector<IOperand>, std::vector<std::string>);
 	std::vector<IOperand> stack;
-	std::map<std::string, void (*)(std::vector<IOperand>, std::vector<std::string>)> func;
-	for (auto it = instruction.begin(); it != instruction.end(); ++it) {
-		(*it)[0];
-		func.find((*it)[0])->(stack, *it);
-	}
+//	std::map<std::string, function> func;
+//	for (std::vector<std::vector<std::string> >::iterator it = instruction.begin(); it != instruction.end(); ++it) {
+//		auto iter = func.find((*it)[0]);
+//		(*iter->)(stack, *it);
+//	}
 }
 
 int main(int argc, char **argv) {

@@ -2,22 +2,22 @@
 // Created by PC on 01/07/2018.
 //
 
-#ifndef ABSTRACT_VM_FLOAT_HPP
-#define ABSTRACT_VM_FLOAT_HPP
+#ifndef ABSTRACT_VM_INT8_HPP
+#define ABSTRACT_VM_INT8_HPP
 
 
 #include "IOperand.hpp"
 
-class Float : public IOperand{
+class OpInt8 : public IOperand{
 
 public:
-	Float(std::string);
+	OpInt8(std::string);
 
-	Float(Float const &src);
+	OpInt8(OpInt8 const &src);
 
-	Float &operator=(Float const &rhs);
+	OpInt8 &operator=(OpInt8 const &rhs);
 
-	virtual ~Float(void);
+	virtual ~OpInt8(void);
 
 	virtual int getPrecision( void ) const = 0; // Precision of the type of the instance
 	virtual eOperandType getType( void ) const = 0; // Type of the instance
@@ -29,10 +29,10 @@ public:
 	virtual std::string const & toString( void ) const = 0; // String representation of the instance
 
 private:
-	Float(void);
-	eOperandType _type = eOperandType(Float);
+	OpInt8(void);
+	eOperandType _type = Int8;
 	std::string _nbr;
 };
 
 
-#endif //ABSTRACT_VM_FLOAT_HPP
+#endif //ABSTRACT_VM_INT8_HPP

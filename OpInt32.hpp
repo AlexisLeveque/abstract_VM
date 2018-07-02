@@ -8,16 +8,16 @@
 
 #include "IOperand.hpp"
 
-class Int32 : public IOperand{
+class OpInt32 : public IOperand{
 
 public:
-	Int32(std::string);
+	OpInt32(std::string);
 
-	Int32(Int32 const &src);
+	OpInt32(OpInt32 const &src);
 
-	Int32 &operator=(Int32 const &rhs);
+	OpInt32 &operator=(OpInt32 const &rhs);
 
-	virtual ~Int32(void);
+	virtual ~OpInt32(void);
 
 	virtual int getPrecision( void ) const = 0; // Precision of the type of the instance
 	virtual eOperandType getType( void ) const = 0; // Type of the instance
@@ -29,8 +29,8 @@ public:
 	virtual std::string const & toString( void ) const = 0; // String representation of the instance
 
 private:
-	Int32(void);
-	eOperandType _type = eOperandType(Int32);
+	OpInt32(void);
+	eOperandType _type = Int32;
 	std::string _nbr;
 };
 

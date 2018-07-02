@@ -2,22 +2,22 @@
 // Created by PC on 01/07/2018.
 //
 
-#ifndef ABSTRACT_VM_INT8_HPP
-#define ABSTRACT_VM_INT8_HPP
+#ifndef ABSTRACT_VM_DOUBLE_HPP
+#define ABSTRACT_VM_DOUBLE_HPP
 
 
 #include "IOperand.hpp"
 
-class Int8 : public IOperand{
+class OpDouble : public IOperand{
 
 public:
-	Int8(std::string);
+	OpDouble(std::string);
 
-	Int8(Int8 const &src);
+	OpDouble(OpDouble const &src);
 
-	Int8 &operator=(Int8 const &rhs);
+	OpDouble &operator=(OpDouble const &rhs);
 
-	virtual ~Int8(void);
+	virtual ~OpDouble(void);
 
 	virtual int getPrecision( void ) const = 0; // Precision of the type of the instance
 	virtual eOperandType getType( void ) const = 0; // Type of the instance
@@ -29,10 +29,10 @@ public:
 	virtual std::string const & toString( void ) const = 0; // String representation of the instance
 
 private:
-	Int8(void);
-	eOperandType _type = eOperandType(Int8);
+	OpDouble(void);
+	eOperandType _type = Double;
 	std::string _nbr;
 };
 
 
-#endif //ABSTRACT_VM_INT8_HPP
+#endif //ABSTRACT_VM_DOUBLE_HPP

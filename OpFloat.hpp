@@ -2,22 +2,22 @@
 // Created by PC on 01/07/2018.
 //
 
-#ifndef ABSTRACT_VM_INT16_HPP
-#define ABSTRACT_VM_INT16_HPP
+#ifndef ABSTRACT_VM_FLOAT_HPP
+#define ABSTRACT_VM_FLOAT_HPP
 
 
 #include "IOperand.hpp"
 
-class Int16 : public IOperand{
+class OpFloat : public IOperand{
 
 public:
-	Int16(std::string);
+	OpFloat(std::string);
 
-	Int16(Int16 const &src);
+	OpFloat(OpFloat const &src);
 
-	Int16 &operator=(Int16 const &rhs);
+	OpFloat &operator=(OpFloat const &rhs);
 
-	virtual ~Int16(void);
+	virtual ~OpFloat(void);
 
 	virtual int getPrecision( void ) const = 0; // Precision of the type of the instance
 	virtual eOperandType getType( void ) const = 0; // Type of the instance
@@ -29,9 +29,10 @@ public:
 	virtual std::string const & toString( void ) const = 0; // String representation of the instance
 
 private:
-	Int16(void);
-	eOperandType _type = eOperandType(Int16);
+	OpFloat(void);
+	eOperandType _type = Float;
 	std::string _nbr;
 };
 
-#endif //ABSTRACT_VM_INT16_HPP
+
+#endif //ABSTRACT_VM_FLOAT_HPP

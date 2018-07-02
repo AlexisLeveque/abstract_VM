@@ -2,22 +2,22 @@
 // Created by PC on 01/07/2018.
 //
 
-#ifndef ABSTRACT_VM_DOUBLE_HPP
-#define ABSTRACT_VM_DOUBLE_HPP
+#ifndef ABSTRACT_VM_INT16_HPP
+#define ABSTRACT_VM_INT16_HPP
 
 
 #include "IOperand.hpp"
 
-class Double : public IOperand{
+class OpInt16 : public IOperand{
 
 public:
-	Double(std::string);
+	OpInt16(std::string);
 
-	Double(Double const &src);
+	OpInt16(OpInt16 const &src);
 
-	Double &operator=(Double const &rhs);
+	OpInt16 &operator=(OpInt16 const &rhs);
 
-	virtual ~Double(void);
+	virtual ~OpInt16(void);
 
 	virtual int getPrecision( void ) const = 0; // Precision of the type of the instance
 	virtual eOperandType getType( void ) const = 0; // Type of the instance
@@ -29,10 +29,9 @@ public:
 	virtual std::string const & toString( void ) const = 0; // String representation of the instance
 
 private:
-	Double(void);
-	eOperandType _type = eOperandType(Double);
+	OpInt16(void);
+	eOperandType _type = Int16;
 	std::string _nbr;
 };
 
-
-#endif //ABSTRACT_VM_DOUBLE_HPP
+#endif //ABSTRACT_VM_INT16_HPP
