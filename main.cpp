@@ -3,7 +3,8 @@
 #include <string>
 #include <vector>
 #include <regex>
-#include "IOperand.hpp"
+#include "Instruction.hpp"
+
 
 
 bool read_from_file = false;
@@ -64,14 +65,27 @@ std::vector<std::vector<std::string> > parser(std::vector<std::string> input) {
 	return result;
 }
 
+
 void work(std::vector<std::vector<std::string> > instruction) {
-	typedef void (*function)(std::vector<IOperand>, std::vector<std::string>);
-	std::vector<IOperand> stack;
-//	std::map<std::string, function> func;
-//	for (std::vector<std::vector<std::string> >::iterator it = instruction.begin(); it != instruction.end(); ++it) {
-//		auto iter = func.find((*it)[0]);
-//		(*iter->)(stack, *it);
-//	}
+	typedef void (*function)(std::vector<const IOperand *>&, const std::vector<std::string>&);
+	std::vector<const IOperand*> stack;
+	std::map<std::string, const int> myMap = {
+			{ "push", PUSH },
+			{ "pop", POP },
+			{ "dump", DUMP },
+			{ "assert", ASSERT },
+			{ "add", ADD },
+			{ "sub", SUB },
+			{ "mul", MUL },
+			{ "div", DIV },
+			{ "mod", MOD },
+			{ "print", PRINT },
+			{ "exit", EXIT }
+	};
+	function func[] = {&InstrPush, &InstrPop, &InstrDump, &InstrAssert, &InstrAdd, &InstrSub, &InstrMul, &InstrDiv, &InstrMod, &InstrPrint};
+	for (std::vector<std::vector<std::string> >::iterator it = instruction.begin(); it != instruction.end(); ++it) {
+		func[myMap[(*it)[0]]](stack, *it);
+	}
 }
 
 int main(int argc, char **argv) {

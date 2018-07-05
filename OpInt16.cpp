@@ -2,6 +2,7 @@
 // Created by PC on 01/07/2018.
 //
 
+#include <iostream>
 #include "OpInt16.hpp"
 
 OpInt16::OpInt16(void) {}

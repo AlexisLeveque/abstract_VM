@@ -5,7 +5,7 @@
 #ifndef ABSTRACT_VM_OPERANDFACTORY_HPP
 #define ABSTRACT_VM_OPERANDFACTORY_HPP
 
-#include "IOperand.hpp"
+#include "Instruction.hpp"
 
 class OperandFactory {
 

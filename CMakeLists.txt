@@ -3,4 +3,11 @@ project(abstract_vm)
 
 set(CMAKE_CXX_STANDARD 11)
 
-add_executable(abstract_vm main.cpp IOperand.hpp createOperand.cpp Int8.cpp Int8.hpp Int16.cpp Int16.hpp Int32.cpp Int32.hpp Float.cpp Float.hpp Double.cpp Double.hpp)
+add_executable(abstract_vm main.cpp
+        IOperand.hpp
+        OpInt8.cpp OpInt8.hpp
+        OpInt16.cpp OpInt16.hpp
+        OpInt32.cpp OpInt32.hpp
+        OpFloat.cpp OpFloat.hpp
+        OpDouble.cpp OpDouble.hpp
+        OperandFactory.cpp OperandFactory.hpp Instruction.cpp Instruction.hpp)

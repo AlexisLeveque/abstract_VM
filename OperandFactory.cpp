@@ -3,6 +3,11 @@
 //
 
 #include "OperandFactory.hpp"
+#include "OpInt8.hpp"
+#include "OpInt16.hpp"
+#include "OpInt32.hpp"
+#include "OpFloat.hpp"
+#include "OpDouble.hpp"
 
 bool checkOverflow(std::string s1, std::string s2){
 	if(s1.size() > s2.size()) return true;
@@ -51,6 +56,8 @@ IOperand const * OperandFactory::createInt8( std::string const & value ) const {
 	if (checkUnderflow(value, std::to_string(INT8_MIN))) {
 		//trow except
 	}
+	const IOperand *ret = new OpInt8(value);
+	return ret;
 }
 
 IOperand const * OperandFactory::createInt16( std::string const & value ) const {
@@ -60,6 +67,8 @@ IOperand const * OperandFactory::createInt16( std::string const & value ) const 
 	if (checkUnderflow(value, std::to_string(INT16_MIN))) {
 		//trow except
 	}
+	const IOperand *ret = new OpInt16(value);
+	return ret;
 }
 
 IOperand const * OperandFactory::createInt32( std::string const & value ) const {
@@ -69,6 +78,8 @@ IOperand const * OperandFactory::createInt32( std::string const & value ) const 
 	if (checkUnderflow(value, std::to_string(INT32_MIN))) {
 		//trow except
 	}
+	const IOperand *ret = new OpInt32(value);
+	return ret;
 }
 
 IOperand const * OperandFactory::createFloat( std::string const & value ) const {
@@ -78,7 +89,8 @@ IOperand const * OperandFactory::createFloat( std::string const & value ) const 
 	catch (std::exception & e) {
 
 	}
-
+	const IOperand *ret = new OpFloat(value);
+	return ret;
 }
 
 IOperand const * OperandFactory::createDouble( std::string const & value ) const {
@@ -88,6 +100,8 @@ IOperand const * OperandFactory::createDouble( std::string const & value ) const
 	catch (std::exception & e) {
 
 	}
+	const IOperand *ret = new OpDouble(value);
+	return ret;
 }
 
 

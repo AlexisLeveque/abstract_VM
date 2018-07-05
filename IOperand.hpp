@@ -7,6 +7,8 @@
 
 #include <string>
 
+
+enum eInstr {PUSH, POP, DUMP, ASSERT, ADD, SUB, MUL, DIV, MOD, PRINT, EXIT};
 enum eOperandType {Int8, Int16, Int32, Float, Double};
 
 class IOperand {
