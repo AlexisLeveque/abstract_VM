@@ -48,6 +48,7 @@ void InstrAssert(std::vector<const IOperand *> &stack, const std::vector<std::st
 }
 
 void InstrAdd(std::vector<const IOperand *> &stack, const std::vector<std::string> &instr) {
+	//http://www.cplusplus.com/articles/DE18T05o/
 }
 
 void InstrSub(std::vector<const IOperand *> &stack, const std::vector<std::string> &instr) {
